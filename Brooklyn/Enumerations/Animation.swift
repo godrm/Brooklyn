@@ -70,6 +70,7 @@ enum Animation: String, CaseIterable {
     case splash
     case stripes
     case sulleysFur
+    case summer2020
     case sunset
     case theRoom
     case tissue

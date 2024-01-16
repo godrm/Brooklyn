@@ -74,6 +74,7 @@ struct Localizations {
         "splash" : "Splash",
         "stripes" : "Stripes",
         "sulleysFur" : "Sulley's Fur",
+        "summer2020" : "AppleTV Summer 2020",
         "sunset" : "Sunset",
         "theRoom" : "The Room",
         "tissue" : "Tissue",
