@@ -9,6 +9,7 @@
 import Foundation
 import ScreenSaver
 import AVKit
+import OSLog
 
 // MARK: - BrooklynView
 final class BrooklynView: ScreenSaverView {
@@ -28,18 +29,27 @@ final class BrooklynView: ScreenSaverView {
     // MARK: Properties
     private let manager = BrooklynManager(mode: .screensaver)
     private lazy var preferences = PreferencesWindowController(windowNibName: PreferencesWindowController.identifier)
+    
+    private let log = Logger(subsystem: "kr.codesquad.brooklyn", category: "ScreenSaverView")
 
     // MARK: Initialization
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
+        log.error("init with coder")
         animationTimeInterval = Constant.secondPerFrame
         configure()
     }
     
     override init?(frame: NSRect, isPreview: Bool) {
         super.init(frame: frame, isPreview: isPreview)
+        log.error("init with frame \(isPreview)")
         animationTimeInterval = Constant.secondPerFrame
         configure()
+    }
+    
+    deinit {
+        log.error("deinit")
+
     }
 }
 
@@ -48,12 +58,16 @@ extension BrooklynView {
     
     override func startAnimation() {
         super.startAnimation()
+        log.error("startAnimation")
+        setupLayer()
         manager.player.play()
     }
     
     override func stopAnimation() {
         super.stopAnimation()
+        log.error("stopAnimation")
         manager.player.pause()
+        videoLayer.player = nil
     }
 }
 
